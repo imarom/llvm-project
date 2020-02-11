@@ -1232,7 +1232,7 @@ void UnwrappedLineFormatter::formatFirstToken(
   // Remove empty lines after access specifiers.
   if (PreviousLine && PreviousLine->First->isAccessSpecifier() &&
       (!PreviousLine->InPPDirective || !RootToken.HasUnescapedNewline))
-    Newlines = std::min(1u, Newlines);
+    Newlines = 2; /* imarom: for private/public/protected we want EXACTLY one line */
 
   if (Newlines)
     Indent = NewlineIndent;
